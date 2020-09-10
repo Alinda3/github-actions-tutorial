@@ -73,7 +73,7 @@ jobs:
               
       # Configure kubectl.
       - name: Configure kubectl
-        run: echo ${{ secrets.KUBECONFIG }} | base64 --decode > kubeconfig.yml
+        run: echo ${{ secrets.KUBECONFIG }} | base64 -i > kubeconfig.yml
       - name: Set up Kustomize
         run: |-
           curl -sfL https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv${KUSTOMIZE_VERSION}/kustomize_v${KUSTOMIZE_VERSION}_linux_amd64.tar.gz | tar -xzf -
