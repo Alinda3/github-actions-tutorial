@@ -1,7 +1,8 @@
 name: main-worklfow
 
 env:
-  IMAGE_REPOSITORY: busser/foobar
+
+  IMAGE_REPOSITORY: fairykanchi/foobar
   KUBECTL_VERSION: "1.14.10"
   KUSTOMIZE_VERSION: "3.5.4"
 
