@@ -76,8 +76,9 @@ jobs:
         run: echo ${{ secrets.KUBECONFIG }} | base64 -w0 > kubeconfig.yml
       - name: Set up Kustomize
         run: |-
-          curl -sfL https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv${KUSTOMIZE_VERSION}/kustomize_v${KUSTOMIZE_VERSION}_linux_amd64.tar.gz | tar -xzf -
-          sudo mv kustomize /usr/local/bin/
+             curl -o kustomize --location https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
+             chmod u+x ./kustomize
+             sudo mv kustomize /usr/local/bin/
           
         # Kustomize Kubernetes resources.
       - name: Kustomize Kubernetes resources
