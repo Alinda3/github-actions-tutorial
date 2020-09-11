@@ -73,4 +73,4 @@ jobs:
               
       # Configure kubectl.
       - name: Configure kubectl
-        run: echo ${{ secrets.KUBECONFIG }} | base64 -w0 > kubeconfig.yml
+        run: echo ${{ secrets.KUBECONFIG }} > kubeconfig.yml
