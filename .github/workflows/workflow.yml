@@ -74,21 +74,3 @@ jobs:
       # Configure kubectl.
       - name: Configure kubectl
         run: echo ${{ secrets.KUBECONFIG }} | base64 -w0 > kubeconfig.yml
-      - name: Set up Kustomize
-        run: |-
-             curl -o kustomize --location https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
-             chmod u+x ./kustomize
-             sudo mv kustomize /usr/local/bin/
-          
-        # Kustomize Kubernetes resources.
-      - name: Kustomize Kubernetes resources
-        working-directory: ./manifests
-        run: kustomize edit set image REPOSITORY:TAG=${IMAGE_REPOSITORY}:sha-${GITHUB_SHA::7}
-        
-        # Deploy to Kubernetes.
-      - name: Deploy to Kubernetes
-        run: kubectl --kubeconfig kubeconfig.yml apply --kustomize manifests/
-        
-        # Validate deployment.
-      - name: Validate deployment
-        run: kubectl --kubeconfig kubeconfig.yml rollout status --timeout 120s deployment/foobar
