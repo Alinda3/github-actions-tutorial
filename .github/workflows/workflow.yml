@@ -88,8 +88,8 @@ jobs:
 
       # Deploy to Kubernetes.
       - name: Deploy to Kubernetes
-        run: kubectl --kubeconfig manifests/kubeconfig.yml apply --kustomize manifests/
+        run: kubectl --kubeconfig kubeconfig.yml apply --kustomize manifests/
       
       # Validate deployment.
       - name: Validate deployment
-        run: kubectl --kubeconfig manifests/kubeconfig.yml rollout status --timeout 120s deployment/foobar
+        run: kubectl --kubeconfig kubeconfig.yml rollout status --timeout 120s deployment/foobar
