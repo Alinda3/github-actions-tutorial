@@ -6,12 +6,13 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/padok-team/github-actions-tutorial/foobar"
+	"./foobar"
 )
 
 const addr = ":8080"
 
 func main() {
+	fmt.Println("hello world")
 	http.HandleFunc("/foobar", foobarHandler)
 	http.HandleFunc("/healthz", healthHandler)
 
